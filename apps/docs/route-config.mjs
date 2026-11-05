@@ -53,6 +53,7 @@ export function loadRoutes({
       layout("./layouts/HomepageLayoutRoute.jsx", [
         index("./routes/LandingPageRoute.jsx"),
       ]),
+      route("solvuu", "./routes/SolvuuRoute.jsx"),
       route("try", "./routes/TryRoute.jsx"),
       layout("./layouts/ContentLayoutRoute.jsx", [
         route("packages", "./routes/PackagesRoute.jsx"),
