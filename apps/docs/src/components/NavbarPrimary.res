@@ -48,6 +48,9 @@ module LeftContent = {
         >
           {React.string("Community")}
         </Link>
+        <Link to=#"/solvuu" className={isActive(~url="/solvuu", ~pathname) ++ " hidden md:block"}>
+          {React.string("Solvuu")}
+        </Link>
       </div>
     }
 }
