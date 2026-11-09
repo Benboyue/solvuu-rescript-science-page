@@ -6,8 +6,18 @@ external hljsCss: string = "default"
 
 open ReactRouter
 
+type routeLocation = {
+  pathname: string,
+}
+
+@module("react-router")
+external useLocation: unit => routeLocation = "useLocation"
+
 @react.component
 let default = () => {
+  let pathname = useLocation().pathname
+  let isSolvuuPage = pathname == "/solvuu" || pathname == "/solvuu/"
+
   <html lang="en">
     <head>
       {CypressBootstrap.element()}
@@ -24,7 +34,7 @@ let default = () => {
       <meta charSet="UTF-8" />
     </head>
     <body>
-      <NavbarPrimary />
+      {isSolvuuPage ? React.null : <NavbarPrimary />}
       <Outlet />
       <ScrollRestoration />
       <Scripts />

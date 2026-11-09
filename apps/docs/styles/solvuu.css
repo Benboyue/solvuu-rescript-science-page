@@ -1,19 +1,818 @@
+/* Main page */
 .solvuu-page {
-  min-height: 70vh;
-  padding: 64px 24px;
-  background-color: #ffffff;
-  color: #222222;
-  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  background: #ffffff;
+  color: #252525;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.solvuu-page h1 {
+.solvuu-page *,
+.solvuu-page *::before,
+.solvuu-page *::after {
+  box-sizing: border-box;
+}
+
+/* Content container */
+.solvuu-container {
+  width: calc(100% - 40px);
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 48px 0 160px;
+}
+
+/* Introduction */
+.solvuu-intro {
+  margin-bottom: 128px;
+}
+
+/* Solvuu introduction text */
+.solvuu-intro-columns {
+  column-count: 1;
+  font-size: 16px;
+  line-height: 1.625;
+}
+
+/* Paragraph spacing and typography */
+.solvuu-intro .solvuu-intro-columns > p {
+  margin: 0 0 16px;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.solvuu-intro .solvuu-intro-columns > p:last-child {
+  margin-bottom: 0;
+}
+
+/* Desktop: two-column layout */
+@media (min-width: 1024px) {
+  .solvuu-intro-columns {
+    column-count: 2;
+    column-gap: 100px;
+    column-fill: balance;
+    font-size: 18px;
+  }
+}
+
+/* Solvuu Hero heading */
+.solvuu-hero-title {
+  box-sizing: border-box;
+
+  width: 100%;
+  max-width: 1184.32px;
+  margin: 70px auto 0;
+  padding: 0 16px;
+
+  font-family: "brandon-grotesque", Helvetica, Arial, sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 80px;
+  letter-spacing: normal;
+
+  color: #42556f;
+  text-align: center;
+}
+
+.solvuu-intro p {
   margin: 0 0 20px;
-  font-size: 40px;
-  line-height: 1.2;
+  font-size: 17px;
+  line-height: 1.75;
 }
 
-.solvuu-page p {
-  margin: 0;
+/* Scientific sections */
+.solvuu-science-list {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+}
+
+.solvuu-science-section {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+}
+
+/* Images */
+.solvuu-science-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.solvuu-science-image img {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Science section headings */
+.solvuu-science-copy h2 {
+  font-family: "brandon-grotesque", Helvetica, Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 54px;
+  letter-spacing: normal;
+  color: #42556f;
+  text-align: left;
+
+  margin: 16px 0 16px;
+}
+
+.solvuu-science-copy p {
+  margin: 0 0 20px;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* Science section Learn More links */
+.solvuu-science-copy a {
+  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #44a1f5;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.solvuu-learn-more:hover {
+  text-decoration: underline;
+}
+
+.solvuu-learn-more:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* Smaller screens */
+@media (max-width: 700px) {
+  .solvuu-container {
+    padding: 40px 20px 64px;
+  }
+
+  .solvuu-intro {
+    margin-bottom: 48px;
+  }
+
+  .solvuu-intro h1 {
+    font-size: 30px;
+  }
+
+  .solvuu-intro p {
+    font-size: 16px;
+  }
+
+  .solvuu-science-list {
+    gap: 56px;
+  }
+
+  .solvuu-science-section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .solvuu-science-image img {
+    max-width: 230px;
+  }
+
+  .solvuu-science-copy h2 {
+    font-size: 24px;
+  }
+}
+
+/* ====================================
+   Solvuu Hero Section
+   ==================================== */
+
+.solvuu-hero {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+}
+
+/* Scientific SVG background */
+.solvuu-hero-art {
+  position: absolute;
+  inset: 0;
+  width: 400%;
+  left: -150%;
+  height: 100%;
+
+  background-image: url("/solvuu-assets/header.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Semi-transparent gradient */
+.solvuu-hero-gradient {
+  position: absolute;
+  inset: 0;
+  width: 400%;
+  left: -150%;
+  height: 100%;
+
+  background-image: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #3bc9b1 50%,
+    #44a1f5 100%
+  );
+
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Logo, navigation and heading */
+.solvuu-hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
+.solvuu-logo-row {
+  width: calc(100% - 40px);
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 24px 0 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Solvuu top navigation */
+.solvuu-top-nav {
+  display: grid;
+  grid-template-columns: 99.67px 100.4px 111.53px;
+  align-items: center;
+  gap: 0;
+}
+
+.solvuu-top-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 41px;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 22.5px;
+
+  color: #33435c;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Active page */
+.solvuu-top-nav a.solvuu-nav-active {
+  color: #44a1f5;
+}
+
+/* Hover and keyboard focus */
+.solvuu-top-nav a:hover {
+  color: #3298ff;
+}
+
+.solvuu-top-nav a:focus-visible {
+  outline: 2px solid #3298ff;
+  outline-offset: 4px;
+}
+
+.solvuu-logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.solvuu-logo {
+  display: block;
+  width: 116.1px;
+  height: auto;
+}
+
+/* ========================================
+   Microbial Genomics - Desktop Layout
+   ======================================== */
+
+@media (min-width: 1280px) {
+  /* Entire section: 900px, horizontally centered */
+  .solvuu-science-list > .solvuu-science-section:first-child {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 900px;
+    max-width: 100%;
+    margin: 0 auto;
+    gap: 140px;
+  }
+
+  /* Left image container */
+  .solvuu-science-list
+    > .solvuu-science-section:first-child
+    .solvuu-science-image {
+    flex: 0 0 360px;
+    width: 360px;
+    height: 360px;
+  }
+
+  /* Image */
+  .solvuu-science-list
+    > .solvuu-science-section:first-child
+    .solvuu-science-image
+    img {
+    display: block;
+    width: 360px;
+    max-width: none;
+    height: 360px;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+
+  /* Right text container */
+  .solvuu-science-list
+    > .solvuu-science-section:first-child
+    .solvuu-science-copy {
+    flex: 0 0 400px;
+    width: 400px;
+    min-width: 0;
+  }
+}
+
+/* Microbial Genomics - Text Spacing */
+@media (min-width: 1280px) {
+  .solvuu-science-list
+    > .solvuu-science-section:first-child
+    .solvuu-science-copy
+    > p {
+    margin-bottom: 32px;
+  }
+}
+
+/* ========================================
+   Transcriptomics - Desktop Layout
+   ======================================== */
+
+@media (min-width: 1280px) {
+  /* Entire Transcriptomics section */
+  .solvuu-science-list > .solvuu-science-section:nth-child(2) {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+
+    width: 900px;
+    max-width: 100%;
+    gap: 100px;
+
+    margin: 8px auto 0;
+  }
+
+  /* Image container */
+  .solvuu-science-list
+    > .solvuu-science-section:nth-child(2)
+    .solvuu-science-image {
+    flex: 0 0 360px;
+    width: 360px;
+    height: 360px;
+  }
+
+  /* Image */
+  .solvuu-science-list
+    > .solvuu-science-section:nth-child(2)
+    .solvuu-science-image
+    img {
+    display: block;
+    width: 360px;
+    max-width: none;
+    height: 360px;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+
+  /* Text container */
+  .solvuu-science-list
+    > .solvuu-science-section:nth-child(2)
+    .solvuu-science-copy {
+    flex: 0 0 400px;
+    width: 400px;
+    min-width: 0;
+  }
+
+  /* Spacing between description and Learn More */
+  .solvuu-science-list
+    > .solvuu-science-section:nth-child(2)
+    .solvuu-science-copy
+    > p {
+    margin-bottom: 32px;
+  }
+}
+
+/* ========================================
+   Gene Regulation - Desktop Layout
+   ======================================== */
+
+@media (min-width: 1280px) {
+  /* Entire Gene Regulation section */
+  .solvuu-science-list > .solvuu-science-section:nth-child(3) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 900px;
+    max-width: 100%;
+    gap: 140px;
+
+    margin: 8px auto 0;
+  }
+
+  /* Left image container */
+  .solvuu-science-list
+    > .solvuu-science-section:nth-child(3)
+    .solvuu-science-image {
+    flex: 0 0 360px;
+    width: 360px;
+    height: 360px;
+  }
+
+  /* Image */
+  .solvuu-science-list
+    > .solvuu-science-section:nth-child(3)
+    .solvuu-science-image
+    img {
+    display: block;
+    width: 360px;
+    max-width: none;
+    height: 360px;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+
+  /* Right text container */
+  .solvuu-science-list
+    > .solvuu-science-section:nth-child(3)
+    .solvuu-science-copy {
+    flex: 0 0 400px;
+    width: 400px;
+    min-width: 0;
+  }
+
+  /* Description to Learn More spacing */
+  .solvuu-science-list
+    > .solvuu-science-section:nth-child(3)
+    .solvuu-science-copy
+    > p {
+    margin-bottom: 32px;
+  }
+}
+
+/* ========================================
+   Variant Discovery - Desktop Layout
+   ======================================== */
+
+@media (min-width: 1280px) {
+  /* Entire Variant Discovery section */
+  .solvuu-science-list > .solvuu-science-section:nth-child(4) {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+
+    width: 900px;
+    max-width: 100%;
+    gap: 100px;
+
+    margin: 8px auto 0;
+  }
+
+  /* Right image container */
+  .solvuu-science-list
+    > .solvuu-science-section:nth-child(4)
+    .solvuu-science-image {
+    flex: 0 0 360px;
+    width: 360px;
+    height: 360px;
+  }
+
+  /* Image */
+  .solvuu-science-list
+    > .solvuu-science-section:nth-child(4)
+    .solvuu-science-image
+    img {
+    display: block;
+    width: 360px;
+    max-width: none;
+    height: 360px;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+
+  /* Left text container */
+  .solvuu-science-list
+    > .solvuu-science-section:nth-child(4)
+    .solvuu-science-copy {
+    flex: 0 0 400px;
+    width: 400px;
+    min-width: 0;
+  }
+
+  /* Description to Learn More spacing */
+  .solvuu-science-list
+    > .solvuu-science-section:nth-child(4)
+    .solvuu-science-copy
+    > p {
+    margin-bottom: 32px;
+  }
+}
+
+/* ========================================
+   Single-cell Genomics - Desktop Layout
+   ======================================== */
+
+@media (min-width: 1280px) {
+  /* Entire Single-cell Genomics section */
+  .solvuu-science-list > .solvuu-science-section:nth-child(5) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 900px;
+    max-width: 100%;
+    height: auto;
+    gap: 140px;
+
+    margin: 8px auto 0;
+  }
+
+  /* Left image container */
+  .solvuu-science-list
+    > .solvuu-science-section:nth-child(5)
+    .solvuu-science-image {
+    flex: 0 0 360px;
+    width: 360px;
+    height: 360px;
+  }
+
+  /* Image */
+  .solvuu-science-list
+    > .solvuu-science-section:nth-child(5)
+    .solvuu-science-image
+    img {
+    display: block;
+    width: 360px;
+    max-width: none;
+    height: 360px;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+
+  /* Right text container */
+  .solvuu-science-list
+    > .solvuu-science-section:nth-child(5)
+    .solvuu-science-copy {
+    flex: 0 0 400px;
+    width: 400px;
+    min-width: 0;
+  }
+
+  /* Description to Learn More spacing */
+  .solvuu-science-list
+    > .solvuu-science-section:nth-child(5)
+    .solvuu-science-copy
+    > p {
+    margin-bottom: 32px;
+  }
+}
+
+/* ========================================
+   Solvuu - Logo
+   ======================================== */
+
+@media (max-width: 700px) {
+  .solvuu-logo-row {
+    padding: 16px 20px 0;
+  }
+
+  .solvuu-logo {
+    width: 126px;
+  }
+}
+
+/* Shared body text styles for Solvuu */
+.solvuu-intro .solvuu-intro-columns > p,
+.solvuu-science-copy p {
+  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
   font-size: 18px;
-  line-height: 1.6;
+  font-weight: 400;
+  line-height: 29.25px;
+  letter-spacing: normal;
+  color: #33435c;
+}
+
+/* ========================================
+   Science Sections - Shared Background
+   ======================================== */
+
+/* Parent container for all five science sections */
+.solvuu-science-list {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Full-width light-gray background */
+.solvuu-science-list::before {
+  content: "";
+  position: absolute;
+
+  top: -96px;
+  bottom: -160px;
+  left: 50%;
+
+  width: 100vw;
+  transform: translateX(-50%);
+
+  background-color: #f4f4f4;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ========================================
+   Solvuu Footer
+   ======================================== */
+
+.solvuu-footer {
+  width: 100%;
+  background-color: #273447;
+  color: #ffffff;
+  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+}
+
+.solvuu-footer-inner {
+  box-sizing: border-box;
+  width: calc(100% - 48px);
+  max-width: 1240px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 180px 180px;
+  column-gap: 0;
+
+  padding: 80px 0 80px;
+}
+
+/* Brand column */
+
+.solvuu-footer-logo {
+  display: block;
+  width: 169.9px;
+  height: auto;
+}
+
+.solvuu-footer-tagline {
+  margin: 8px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.solvuu-footer-social {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+  height: 20px;
+}
+
+/* Footer social icon links */
+.solvuu-footer-social-link {
+  display: block;
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+  line-height: 0;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.solvuu-footer-social-link:hover {
+  opacity: 0.8;
+}
+
+/* Footer social SVG icons */
+.solvuu-footer-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.solvuu-footer-copyright {
+  margin: 59.2px 0 0;
+  font-size: 12px;
+  line-height: 18px;
+  color: #ffffff;
+}
+
+/* Main navigation column */
+
+.solvuu-footer-primary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+}
+
+.solvuu-footer-primary a,
+.solvuu-footer-science > a {
+  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  color: #44a1f5;
+  text-decoration: none;
+}
+
+/* Science navigation column */
+
+.solvuu-footer-science {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.solvuu-footer-science-title {
+  margin-bottom: 28px;
+}
+
+.solvuu-footer-science > a:not(.solvuu-footer-science-title) {
+  line-height: 19.2px;
+  margin-bottom: 12px;
+}
+
+/* Legal links */
+
+.solvuu-footer-legal {
+  display: flex;
+  gap: 10px;
+  margin-top: 0;
+}
+
+.solvuu-footer-legal a {
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 18px;
+  text-decoration: none;
+}
+
+/* Basic responsive layout */
+
+@media (max-width: 900px) {
+  .solvuu-footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .solvuu-footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .solvuu-footer-inner {
+    grid-template-columns: 1fr;
+    padding: 48px 0;
+  }
+
+  .solvuu-footer-brand {
+    grid-column: auto;
+  }
+}
+
+/* Footer navigation column widths */
+.solvuu-footer-primary a {
+  width: 100%;
+}
+
+.solvuu-footer-science-title {
+  display: block;
+  width: 100%;
 }

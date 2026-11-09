@@ -321,6 +321,7 @@ type t = [
   | #"/docs/react/server-components"
   | #"/docs/react/styling"
   | #"/packages"
+  | #"/solvuu"
   | #"/syntax-lookup"
   | #"/syntax-lookup/decorator_as"
   | #"/syntax-lookup/decorator_dead"
